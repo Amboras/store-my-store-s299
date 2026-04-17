@@ -30,10 +30,10 @@ const body = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Store — Modern Commerce',
-    template: '%s | Store',
+    default: 'RevRacers — Premium Plastic Car Toys',
+    template: '%s | RevRacers',
   },
-  description: 'Discover curated products crafted with care. A modern ecommerce experience.',
+  description: 'Premium plastic car toys built for curious young minds. Safety-certified, vividly detailed, and designed to last. Shop the RevRacers collection today.',
 }
 
 export default function RootLayout({

@@ -25,7 +25,7 @@ function AccordionItem({
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between py-4 text-left"
       >
-        <span className="text-sm font-medium">{title}</span>
+        <span className="text-sm font-semibold">{title}</span>
         <ChevronDown
           className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
@@ -49,27 +49,43 @@ export default function ProductAccordion({ description, details }: ProductAccord
   return (
     <div className="border-t">
       {description && (
-        <AccordionItem title="Description" defaultOpen>
+        <AccordionItem title="Product Details" defaultOpen>
           <div dangerouslySetInnerHTML={{ __html: description }} />
         </AccordionItem>
       )}
 
-      <AccordionItem title="Shipping & Returns">
+      <AccordionItem title="Safety & Materials">
         <ul className="space-y-2">
-          <li>Free standard shipping on orders over $75</li>
-          <li>Express shipping available at checkout</li>
-          <li>Free returns within 30 days of delivery</li>
-          <li>Items must be unworn with original tags</li>
+          <li>Made from premium, durable ABS plastic — BPA-free and non-toxic</li>
+          <li>CE certified (European safety standard)</li>
+          <li>ASTM F963 certified (US toy safety standard)</li>
+          <li>Suitable for children aged 3 years and above</li>
+          <li>No small detachable parts that pose choking hazards</li>
+          <li>Paints are lead-free and child-safe</li>
         </ul>
       </AccordionItem>
 
-      <AccordionItem title="Care Instructions">
+      <AccordionItem title="Shipping & Returns">
         <ul className="space-y-2">
-          <li>Please refer to the care label on the product</li>
-          <li>Store in a cool, dry place away from direct sunlight</li>
-          <li>Handle with care to maintain product quality</li>
+          <li>Free standard US shipping on orders over $50</li>
+          <li>Estimated delivery: 3–5 business days</li>
+          <li>Express shipping available at checkout</li>
+          <li>Free returns within 30 days of delivery</li>
+          <li>All items ship in collector-grade, gift-ready packaging</li>
         </ul>
       </AccordionItem>
+
+      {details && Object.keys(details).length > 0 && (
+        <AccordionItem title="Specifications">
+          <ul className="space-y-2">
+            {Object.entries(details).map(([key, value]) => (
+              <li key={key}>
+                <strong className="text-foreground">{key}:</strong> {value}
+              </li>
+            ))}
+          </ul>
+        </AccordionItem>
+      )}
     </div>
   )
 }
